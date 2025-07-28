@@ -53,7 +53,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-input{
+input, select{
   background-color: #cccccc;
   color: #333333;
 }

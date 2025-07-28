@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-const API_ENDPOINT = 'http://localhost:3000';
-const getToken = localStorage.getItem('token');
+import { useNavigate } from "react-router-dom";
 
 export default function AdminDataKaryawan() {
+
+    const API_ENDPOINT = 'http://localhost:3000';
+    const getToken = localStorage.getItem('token');
+    const navigate = useNavigate();
+
     const [karyawan, setKaryawan] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -47,10 +50,19 @@ export default function AdminDataKaryawan() {
         }
     };
 
+    //Edit
+    const handleEdit = (id) => {
+        navigate(`/admin/karyawan-edit/${id}`);
+    };
+
     return (
         <div className="p-4 bg-white rounded-lg shadow">
             <h2 className="text-xl font-bold mb-4">Data Karyawan</h2>
-
+            <div>
+                <button className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-100 hover:text-gray-600 transition mb-2" onClick={() => navigate('/admin/karyawan-add')}>
+                    Tambah Data Karyawan
+                </button>
+            </div>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -62,7 +74,6 @@ export default function AdminDataKaryawan() {
                             <th className="border px-4 py-2">Email</th>
                             <th className="border px-4 py-2">No. HP</th>
                             <th className="border px-4 py-2">Jabatan</th>
-                            <th className="border px-4 py-2">Foto</th>
                             <th className="border px-4 py-2">Action</th>
                         </tr>
                     </thead>
@@ -81,17 +92,6 @@ export default function AdminDataKaryawan() {
                                     <td className="border px-4 py-2">{item.email}</td>
                                     <td className="border px-4 py-2">{item.no_handphone}</td>
                                     <td className="border px-4 py-2">{item.jabatan}</td>
-                                    <td className="border px-4 py-2 text-center">
-                                        {item.foto ? (
-                                            <img
-                                                src={item.foto}
-                                                alt={item.nama}
-                                                className="h-12 w-12 rounded-full object-cover mx-auto"
-                                            />
-                                        ) : (
-                                            <span className="text-gray-400 italic">-</span>
-                                        )}
-                                    </td>
                                     <td className="border px-4 py-2 text-center space-x-2">
                                         <button
                                             onClick={() => handleEdit(item.id)}
