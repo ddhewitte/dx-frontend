@@ -7,6 +7,10 @@ import GuardRoute from './components/GuardRoute';
 import AdminHome from "./pages/AdminHome";
 import AdminDataKaryawan from "./pages/AdminDataKaryawan";
 import AdminDataAbsensi from "./pages/AdminDataAbsensi";
+import UserHome from "./pages/UserHome";
+import UserAbsensi from "./pages/UserAbsensi";
+import UserProfile from "./pages/UserProfile";
+import UserSummary from "./pages/UserSummary";
 
 export default function App(){
   return(
@@ -28,7 +32,12 @@ export default function App(){
           <GuardRoute allowedRole="USER">
               <DashboardUser />
            </GuardRoute>
-        } />
+        } >
+            <Route index element={<UserHome />} />
+            <Route path="profile" element={<UserProfile />} />
+            <Route path="absensi" element={<UserAbsensi />} />
+            <Route path="summary" element={<UserSummary />} />
+        </Route>
         <Route path="/logout" element={<AuthLogout />} />
       </Routes>
     </BrowserRouter>
