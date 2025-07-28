@@ -1,12 +1,23 @@
-export default function AuthForm(){
+import { useState } from "react";
+
+export default function AuthForm({ onLogin }){
+
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
+
+    const submitProcess = async (e) => {
+        e.preventDefault();
+        onLogin({ user, password });
+    };
+
     return(
         <div class="flex items-center h-screen w-full">
             <div class="w-full bg-white rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
             <span class="block w-full text-xl uppercase font-bold mb-4">Login</span>      
-                <form class="mb-4" action="/" method="post">
+                <form class="mb-4" onSubmit={submitProcess}>
                 <div class="mb-4 md:w-full">
                     <label for="email" class="block text-xs mb-1">Username</label>
-                    <input class="w-full border rounded p-2 outline-none focus:shadow-outline" type="email" name="email" id="email" placeholder="Username or Email" />
+                    <input class="w-full border rounded p-2 outline-none focus:shadow-outline" type="text" name="user" id="user" placeholder="Username" />
                 </div>
                 <div class="mb-6 md:w-full">
                     <label for="password" class="block text-xs mb-1">Password</label>
