@@ -3,10 +3,11 @@ import { useNavigate, Outlet } from 'react-router-dom';
 
 export default function DashboardAdmin() {
     const navigate = useNavigate();
+    const getUser = localStorage.getItem('user');
 
     return (
         <div className="p-8">
-            <h1 className="text-2xl font-bold mb-6">Dashboard Admin / HR | <small>Dexa Group</small></h1>
+            <h1 className="text-2xl font-bold mb-6">Dashboard Admin / HR (Dexa Group) | <small>Selamat Datang, { getUser ?? 'user' }</small></h1>
 
             <div className="flex space-x-1 bg-gray-100 p-4 rounded-lg shadow-md mb-6">
                 <button className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-100 hover:text-gray-600 transition"  onClick={() => navigate('/admin')}>
