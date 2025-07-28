@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_ENDPOINT = "http://localhost:3000"; // Ganti sesuai kebutuhan
+const API_ENDPOINT = import.meta.env.VITE_API_URL;
 
 const UserSummary = () => {
   const getUser = localStorage.getItem("userId");
