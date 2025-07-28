@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_ENDPOINT = "http://localhost:3000";
+const API_ENDPOINT = import.meta.env.VITE_API_URL;
 
 const UserProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -14,7 +14,7 @@ const UserProfile = () => {
   });
 
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('userId'); // diasumsikan disimpan saat login
+  const userId = localStorage.getItem('userId');
 
   // Ambil data karyawan berdasarkan userId
   useEffect(() => {
@@ -106,7 +106,7 @@ const UserProfile = () => {
             <option value="DIREKSI">DIREKSI</option>
           </select>
         </div>
-        
+
         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Simpan</button>
       </form>
     </div>

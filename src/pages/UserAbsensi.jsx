@@ -3,7 +3,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 export default function UserAbsensi() {
-  const API_ENDPOINT = "http://localhost:3000";
+  const API_ENDPOINT = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("token");
   const userId = parseInt(localStorage.getItem("userId"));
   

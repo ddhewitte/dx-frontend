@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { formatDateTime, formatDate } from "../utils/date";
 
 export default function AdminDataAbsensi() {
-    const API_ENDPOINT = 'http://localhost:3000';
+    const API_ENDPOINT = import.meta.env.VITE_API_URL;
     const getToken = localStorage.getItem('token');
     const navigate = useNavigate();
 

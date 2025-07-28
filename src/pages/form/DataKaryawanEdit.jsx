@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function DataKaryawanEdit() {
 
-    const API_ENDPOINT = 'http://localhost:3000';
+    const API_ENDPOINT = import.meta.env.VITE_API_URL;
     const getToken = localStorage.getItem('token');
     const navigate = useNavigate();
     const { id } = useParams();
