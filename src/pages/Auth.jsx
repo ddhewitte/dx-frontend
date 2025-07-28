@@ -1,7 +1,7 @@
 import AuthForm from "../components/AuthForm"
 import { authLogin, getUserProfile} from "../services/AuthService";
 import { useNavigate } from 'react-router-dom';
-import { encryptData } from '../utils/crypto';
+import { encryptData } from '../utils/encrypt';
 
 export default function Auth() {
     const navigate = useNavigate();
@@ -21,9 +21,9 @@ export default function Auth() {
 
             //redirect after login
             if (resProfile.role === 'ADMIN') {
-                navigate('/dashboard-admin');
+                navigate('/admin');
             } else {
-                navigate('/dashboard-user');
+                navigate('/user');
             }
         } catch (err) {
             alert('Login error: ' + err.message);
