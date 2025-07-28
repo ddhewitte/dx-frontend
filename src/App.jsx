@@ -11,6 +11,8 @@ import UserHome from "./pages/UserHome";
 import UserAbsensi from "./pages/UserAbsensi";
 import UserProfile from "./pages/UserProfile";
 import UserSummary from "./pages/UserSummary";
+import DataKaryawanAdd from "./pages/form/DataKaryawanAdd";
+import DataKaryawanEdit from "./pages/form/DataKaryawanEdit";
 
 export default function App(){
   return(
@@ -26,6 +28,8 @@ export default function App(){
             <Route index element={<AdminHome />} />
             <Route path="karyawan" element={<AdminDataKaryawan />} />
             <Route path="absensi" element={<AdminDataAbsensi />} />
+            <Route path="karyawan-add" element={<DataKaryawanAdd />} />
+            <Route path="karyawan-edit/:id" element={<DataKaryawanEdit />} />
         </Route>
 
         <Route path="/user" element={
