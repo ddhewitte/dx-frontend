@@ -1,6 +1,7 @@
 import AuthForm from "../components/AuthForm"
 import { authLogin, getUserProfile} from "../services/AuthService";
 import { useNavigate } from 'react-router-dom';
+import { encryptData } from '../utils/crypto';
 
 export default function Auth() {
     const navigate = useNavigate();
@@ -14,15 +15,12 @@ export default function Auth() {
 
             //Store it to localStorage
             localStorage.setItem('token', token);
-            localStorage.setItem('role', resProfile.role);
+            localStorage.setItem('role', encryptData(resProfile.role));
             localStorage.setItem('userId', resProfile.id);
             localStorage.setItem('user', resProfile.user);
 
-            console.log('resProfile.role', resProfile.role);
-
             //redirect after login
             if (resProfile.role === 'ADMIN') {
-                console.log('admin');
                 navigate('/dashboard-admin');
             } else {
                 navigate('/dashboard-user');
